@@ -139,6 +139,7 @@ class ReportSession(BaseCodecovModel):
     upload_extras = models.JSONField(default=dict)
     state_id = models.IntegerField(null=True, choices=UploadState.choices())
     upload_type_id = models.IntegerField(null=True, choices=UploadType.choices())
+    upload_file_type = models.CharField(max_length=100, default="coverage", null=True)
 
     class Meta:
         db_table = "reports_upload"
