@@ -66,6 +66,7 @@ def test_upload_serializer_contains_expected_fields_no_flags(transactional_db, m
     serializer = UploadSerializer(instance=upload)
     repo = upload.report.commit.repository
     expected_data = {
+        "upload_file_type": "coverage",
         "external_id": str(upload.external_id),
         "created_at": upload.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
         "raw_upload_location": "presigned put",
@@ -93,6 +94,7 @@ def test_upload_serializer_contains_expected_fields_with_flags(
     serializer = UploadSerializer(instance=upload)
     repo = upload.report.commit.repository
     expected_data = {
+        "upload_file_type": "coverage",
         "external_id": str(upload.external_id),
         "created_at": upload.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
         "raw_upload_location": "presigned put",
