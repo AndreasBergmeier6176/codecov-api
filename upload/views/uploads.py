@@ -116,6 +116,7 @@ class UploadViews(ListCreateAPIView, GetterMixin):
         )
         redis = get_redis_connection()
         task_arguments = {
+            "upload_file_type": upload.upload_file_type,
             "commit": commit_sha,
             "upload_id": upload.id,
             "version": "v4",
