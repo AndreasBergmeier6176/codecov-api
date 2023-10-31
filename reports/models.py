@@ -207,3 +207,16 @@ class TestSession(BaseCodecovModel):
 
     class Meta:
         db_table = "reports_testsessions"
+
+
+class TestRun(BaseCodecovModel):
+    outcome = models.BooleanField()
+    duration = models.FloatField()  # number of seconds
+
+    test = models.ForeignKey("Test", related_name="runs", on_delete=models.CASCADE)
+    test_session = models.ForeignKey(
+        "TestSession", related_name="runs", on_delete=models.CASCADE
+    )
+
+    class Meta:
+        db_table = "reports_testruns"
